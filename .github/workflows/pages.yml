@@ -39,12 +39,7 @@ jobs:
 
     - name: Create metadata
       run: |
-        helper/usr/local/bin/regctl manifest get ghcr.io/uniget-org/tools/metadata:main --format raw-body \
-        | helper/usr/local/bin/jq --raw-output '.layers[0].digest' \
-        | xargs -I{} \
-            helper/usr/local/bin/regctl blob get ghcr.io/uniget-org/tools/metadata:main {} \
-        | tar -xz --to-stdout \
-        >metadata.json
+        make metadata.json
 
     - name: Install hugo
       run: |
