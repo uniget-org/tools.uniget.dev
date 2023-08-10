@@ -1,4 +1,4 @@
-module github.com/nicholasdille/docker-setup
+module github.com/uniget-org/tools.uniget.dev
 
 go 1.19
 
