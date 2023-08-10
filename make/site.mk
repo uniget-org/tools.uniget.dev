@@ -1,3 +1,5 @@
+ALL_TOOLS_RAW := $(shell jq --raw-output '.tools[].name' metadata.json | xargs echo)
+
 .PHONY:
 pages: \
 		$(addprefix site/content/tools/,$(addsuffix .md,$(ALL_TOOLS_RAW)))
@@ -10,15 +12,14 @@ site-prerequisites: \
 site: \
 		$(HELPER)/var/lib/uniget/manifests/hugo.json \
 		metadata.json \
-		site-prerequisites \
-		$(addprefix site/content/tools/,$(addsuffix .md,$(ALL_TOOLS_RAW)))
+		site-prerequisites
 	@hugo --source site --minify
 
-$(addprefix site/content/tools/,$(addsuffix .md,$(ALL_TOOLS_RAW))):site/content/tools/%.md: \
+site/content/tools/%.md: \
 		scripts/gh-pages.sh \
 		$(HELPER)/var/lib/uniget/manifests/gojq.json \
 		$(HELPER)/var/lib/uniget/manifests/regclient.json \
-		tools/%/manifest.json \
+		metadata.json \
 		; $(info $(M) Generating static page for $*...)
 	@\
 	mkdir -p site/content/tools; \
