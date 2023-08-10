@@ -1,5 +1,5 @@
-baseURL: https://docker-setup.dille.io
-title: docker-setup
+baseURL: https://tools.uniget.dev
+title: uniget
 copyright: "Nicholas Dille - licensed under [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0/)"
 theme:
 - gitlab.com/gabmus/hugo-ficurinia
