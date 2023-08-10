@@ -10,6 +10,9 @@ on:
     - "make/site.mk"
     - ".github/workflows/pages.yml"
   workflow_dispatch:
+  repository_dispatch:
+    types:
+    - pages
 
 permissions:
   contents: read
@@ -20,6 +23,7 @@ jobs:
 
   build:
     name: Build
+    # TODO: Add check for source repository
     runs-on: ubuntu-22.04
     concurrency:
       group: ${{ github.ref }}
