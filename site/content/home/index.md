@@ -25,8 +25,8 @@ Tools are downloaded, installed and updated automatically.
 ## Installation instructions
 
 ```bash
-curl -sLf https://github.com/uniget-org/uniget/releases/latest/download/uniget_linux_$(uname -m).tar.gz | \
-sudo tar -xzC /usr/local/bin uniget
+curl -sLf https://github.com/uniget-org/cli/releases/latest/download/uniget_linux_$(uname -m).tar.gz \
+| sudo tar -xzC /usr/local/bin uniget
 ```
 
 ## More informaton
