@@ -37,7 +37,7 @@ jobs:
         fetch-depth: 0
 
     - name: Install uniget
-      uses: uniget-org/uniget-action@main
+      uses: uniget-org/uniget-action@v1
       with:
         prefix: helper
         tools: hugo regclient gojq
