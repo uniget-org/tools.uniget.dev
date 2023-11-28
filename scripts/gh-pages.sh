@@ -83,3 +83,10 @@ cat <<EOF
 
 EOF
 jq --raw-output 'select(.messages != null) | .messages | to_entries[] | "### \(.key)\n\n\(.value)"' <<<"${TOOL_JSON}"
+
+cat <<EOF
+
+## History
+
+[Link](https://github.com/uniget-org/tools/commits/main/tools/${tool})
+EOF
