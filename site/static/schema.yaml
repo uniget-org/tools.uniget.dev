@@ -11,7 +11,7 @@ properties:
   version:
     description: Version of the tool
     type: string
-    pattern: "^\\d+\\.\\d+(\\.\\d+(\\.\\d+)?)?(-\\w+)?$"
+    pattern: "^\\d+\\.\\d+(\\.\\d+(\\.\\d+)?)?(-\\w+\\.\\d+)?$"
   binary:
     description: Name - and optionally the path - to the installed binary
     type: string
