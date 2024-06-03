@@ -63,6 +63,13 @@ jobs:
       with:
         path: ./site/public
 
+    - name: Store metadata
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: metadata
+        path: "metadata.json"
+
   deploy:
     name: Deploy
     environment:
