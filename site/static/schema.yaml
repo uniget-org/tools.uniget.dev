@@ -5,9 +5,22 @@ title: uniget tool
 description: Schema for manifest.yaml
 type: object
 properties:
+  schemaVersion:
+    description: Version of the schema
+    type: string
   name:
     description: Name of the tool
     type: string
+  license:
+    description: License of the tool
+    type: object
+    properties:
+      name:
+        description: Name of the license
+        type: string
+      link:
+        description: Link to the license file
+        type: string
   version:
     description: Version of the tool
     type: string
@@ -39,6 +52,9 @@ properties:
   homepage:
     description: Homepage of the tool
     type: string
+  repository:
+    description: Repository of the tool
+    type: string
   description:
     description: Description of the tool
     type: string
@@ -51,6 +67,9 @@ properties:
         type: string
       usage:
         description: Usage message
+        type: string
+      update:
+        description: Update message
         type: string
   renovate:
     type: object
@@ -81,5 +100,5 @@ required:
 - name
 - version
 - tags
-- homepage
+- repository
 - description
