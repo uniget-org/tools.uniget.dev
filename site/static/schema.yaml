@@ -5,7 +5,7 @@ title: uniget tool
 description: Schema for manifest.yaml
 type: object
 properties:
-  schemaVersion:
+  schema_version:
     description: Version of the schema
     type: string
   name:
