@@ -50,7 +50,7 @@
 pages:
   extends:
   - .uniget-install
-  image: python:3.13.0-slim
+  image: python:3.13.0
   script:
   - |
     uniget install \
