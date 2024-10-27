@@ -51,13 +51,12 @@ pages:
   extends:
   - .uniget-install
   image: python:3.13.0-slim
-  before_script:
+  script:
   - |
     uniget install \
         hugo \
         regclient \
         gojq
-  script:
   - |
     make metadata.json
   - |
