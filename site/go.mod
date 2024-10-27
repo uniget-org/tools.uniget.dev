@@ -1,4 +1,4 @@
-module github.com/uniget-org/tools.uniget.dev
+module gitlab.com/uniget-org/tools.uniget.dev
 
 go 1.19
 
