@@ -1,40 +1,7 @@
-.uniget-install:
-  variables:
-    uniget_version: latest
-    uniget_path: /usr/local/bin
-    uniget_prefix: ""
-    uniget_target: usr/local
-    uniget_tools: ""
-  before_script:
-  - |
-    echo "Installing uniget"
-    echo "Requested version ${uniget_version}"
-
-    release_url="https://github.com/uniget-org/cli/releases/latest/download"
-    if test "${uniget_version}" != "latest"; then
-        release_url="https://github.com/uniget-org/cli/releases/download/v${uniget_version}"
-    fi
-    asset_name="uniget_Linux_$(uname -m).tar.gz"
-
-    echo "Creating target path ${uniget_path}"
-    mkdir -p "${uniget_path}"
-
-    echo "Using URL ${release_url}/${asset_name}"
-    curl --silent --show-error --location --fail --url "${release_url}/${asset_name}" \
-    | tar --extract --gzip --directory ${uniget_path} \
-        uniget
-
-    ${uniget_path}/uniget --version
-  - |
-    if test -n "${uniget_tools}"; then
-        echo "Updating metadata"
-        ${uniget_path}/uniget --prefix=${uniget_prefix} --target=${uniget_target} update
-
-        echo "Installing tools (${uniget_tools})"
-        ${uniget_path}/uniget --prefix=${uniget_prefix} --target=${uniget_target} install ${uniget_tools}
-    else
-        echo "No tools requested."
-    fi
+include:
+- project: uniget-org/templates
+  file: uniget.yaml
+  ref: main
 
 pages:
   extends:
