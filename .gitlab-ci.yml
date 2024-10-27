@@ -56,7 +56,8 @@ pages:
     uniget install \
         hugo \
         regclient \
-        gojq
+        gojq \
+        go
   - |
     make metadata.json
   - |

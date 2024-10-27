@@ -4,7 +4,8 @@ copyright: "Nicholas Dille - licensed under [CC BY-SA 4.0](http://creativecommon
 theme:
 - gitlab.com/gabmus/hugo-ficurinia
 languageCode: en-us
-paginate: 10
+pagination:
+  pagerSize: 10
 
 params:
   author: Nicholas Dille
