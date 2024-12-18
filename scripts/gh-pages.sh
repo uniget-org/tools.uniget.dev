@@ -82,7 +82,7 @@ cat <<EOF
 ## Messages
 
 EOF
-jq --raw-output 'select(.messages != null) | .messages | to_entries[] | "### \(.key)\n\n\(.value)"' <<<"${TOOL_JSON}"
+jq --raw-output 'select(.messages != null) | .messages | to_entries[] | "### \(.key)\n\n\(.value)"' <<<"${TOOL_JSON}" | sed 's/</\&lt;/g' | sed 's/>/\&gt;/g'
 
 cat <<EOF
 

@@ -1,5 +1,5 @@
 .PHONY:
-$(addprefix helper--,$(ALL_TOOLS_RAW)):helper--%: \
+helper--%: \
 		$(HELPER)/var/lib/uniget/manifests/%.json
 
 $(HELPER)/var/lib/uniget/manifests/%.json:
