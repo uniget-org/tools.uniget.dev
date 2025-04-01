@@ -13,7 +13,13 @@ pages:
         hugo \
         regclient \
         gojq \
-        go
+        go \
+        gomplate
+  - |
+    git clone --depth=0 https://gitlab.com/uniget-org/tools uniget-tools
+  - |
+    cp -r uniget-tools/tools .
+    cp uniget-tools/make/*.mk make
   - |
     make metadata.json
   - |
