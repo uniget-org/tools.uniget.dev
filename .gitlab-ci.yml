@@ -9,6 +9,11 @@ pages:
   image: python:3.13.0
   script:
   - |
+    apt-get update
+    apt-get -y install --no-install-recommends \
+        bc \
+        coreutils
+  - |
     uniget install \
         hugo \
         regclient \
