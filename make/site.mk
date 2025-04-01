@@ -27,11 +27,18 @@ site: \
 	@hugo --source site --minify
 
 site/content/tools/%.md: \
-		scripts/gh-pages.sh \
 		$(HELPER)/var/lib/uniget/manifests/gojq.json \
 		$(HELPER)/var/lib/uniget/manifests/regclient.json \
-		metadata.json \
+		$(HELPER)/var/lib/uniget/manifests/gomplate.json \
+		tools/%/page.json \
 		; $(info $(M) Generating static page for $*...)
 	@\
 	mkdir -p site/content/tools; \
-	bash scripts/gh-pages.sh "$*" >$@
+	gomplate --datasource=tool=tools/$*/page.json --file=page.md >$@
+
+$(addsuffix /page.json,$(ALL_TOOLS)):$(TOOLS_DIR)/%/page.json: \
+		$(HELPER)/var/lib/uniget/manifests/gojq.json \
+		$(HELPER)/var/lib/uniget/manifests/yq.json \
+		$(TOOLS_DIR)/%/manifest.json \
+		; $(info $(M) Creating manifest for $*...)
+	@bash scripts/create-page-json.sh $*

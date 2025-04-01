@@ -40,11 +40,19 @@ jobs:
       uses: uniget-org/uniget-action@v1
       with:
         prefix: helper
-        tools: hugo regclient gojq
+        tools: hugo regclient gojq gomplate
 
-    - name: Create metadata
+    - name: Checkout tools
+      uses: actions/checkout@v3
+      with:
+        repository: uniget-org/tools
+        path: uniget-tools
+        fetch-depth: 0
+
+    - name: Merge repo trees
       run: |
-        make metadata.json
+        cp -r uniget-tools/tools .
+        cp uniget-tools/make/*.mk make
 
     - name: Install hugo
       run: |
