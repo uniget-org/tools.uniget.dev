@@ -26,7 +26,7 @@ site: \
 		site-prerequisites
 	@hugo --source site --minify
 
-site/content/tools/%.md: \
+$(addprefix site/content/tools/,$(addsuffix .md,$(ALL_TOOLS_RAW))):site/content/tools/%.md: \
 		$(HELPER)/var/lib/uniget/manifests/gojq.json \
 		$(HELPER)/var/lib/uniget/manifests/regclient.json \
 		$(HELPER)/var/lib/uniget/manifests/gomplate.json \

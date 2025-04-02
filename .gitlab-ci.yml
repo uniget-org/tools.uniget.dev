@@ -29,7 +29,7 @@ pages:
     make metadata.json
     make site-prerequisites
   - |
-    make -j4 pages
+    make -j$(nproc) pages
     make site
     mv site/public .
   artifacts:
