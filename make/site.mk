@@ -40,5 +40,5 @@ $(addsuffix /page.json,$(ALL_TOOLS)):$(TOOLS_DIR)/%/page.json: \
 		$(HELPER)/var/lib/uniget/manifests/gojq.json \
 		$(HELPER)/var/lib/uniget/manifests/yq.json \
 		$(TOOLS_DIR)/%/manifest.json \
-		; $(info $(M) Creating manifest for $*...)
+		; $(info $(M) Creating page content for $*...)
 	@bash scripts/create-page-json.sh $*
