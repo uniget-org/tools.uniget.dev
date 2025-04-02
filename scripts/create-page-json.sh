@@ -26,9 +26,9 @@ PUBLISH_DATE="$(
 )"
 
 GIT_HISTORY="$(
-    git -C uniget-tools log --pretty=format:'{"commit": "%h", "date": "%ad", "message": "%s"}' --date=short tools/${TOOL}/manifest.yaml \
-    | head -n 10 \
-    | tr '\n' ',' \
+    git -C uniget-tools log --pretty=format:'%h %ad %s' --date=short tools/${TOOL}/manifest.yaml \
+    | tr -d '"' \
+    | jq --slurp --raw-input --compact-output '[ . | split("\n") | .[] | capture("(?<commit>[a-z0-9]+) (?<date>[0-9]+-[0-9]+-[0-9]+) (?<message>.+)"; null) ]'
 )"
 
 cat tools/${TOOL}/manifest.json \
@@ -36,7 +36,7 @@ cat tools/${TOOL}/manifest.json \
     --arg tool ${TOOL} \
     --arg size ${SIZE_HUMAN} \
     --arg publish_date "${PUBLISH_DATE}" \
-    --argjson git_history "[${GIT_HISTORY:0:-1}]" \
+    --argjson git_history "${GIT_HISTORY}" \
     '
         .tools[] | 
             select(.name == $tool) | 
