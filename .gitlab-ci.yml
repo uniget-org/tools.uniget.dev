@@ -26,8 +26,6 @@ pages:
     cp -r uniget-tools/tools .
     cp uniget-tools/make/*.mk make
   - |
-    make metadata.json
-  - |
     make site-prerequisites
   - |
     make -j4 pages
