@@ -28,7 +28,9 @@ pages:
     rm -rf tools/dummy*
   - |
     make metadata.json
-    make site-prerequisites
+    mv metadata.json metadata.json.json.orig
+    jq 'del(.tools[] | select(.name | startswith("dummy")))' metadata.json.orig >metadata.json
+  - make site-prerequisites
   - |
     make -j$(nproc) pages
     make site
